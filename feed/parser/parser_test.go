@@ -11,8 +11,8 @@ import (
 	. "github.com/onsi/gomega"
 	"github.com/pkg/errors"
 
-	mock_parser "NewsAppV2/article/mocks"
-	"NewsAppV2/article/parser"
+	mock_parser "NewsAppV2/feed/mocks/parser"
+	"NewsAppV2/feed/parser"
 )
 
 type httpError struct {
@@ -51,9 +51,6 @@ var _ = Describe("Parser", func() {
 		}
 	})
 
-	AfterEach(func() {
-	})
-
 	Context("ParseUrl", func() {
 		Context("When given a valid url", func() {
 			It("returns the expected feed", func() {
@@ -73,7 +70,7 @@ var _ = Describe("Parser", func() {
 		Context("When given an invalid url", func() {
 			It("returns a nil feed and an error", func() {
 				err := errors.New("some-error")
-				expectedError := errors.Wrap(err, "parsing failed")
+				expectedError := errors.Wrap(err, "parsing URL failed")
 
 				mockGofeedParser.
 					EXPECT().
@@ -128,7 +125,7 @@ var _ = Describe("Parser", func() {
 							timeout: true,
 						},
 					}
-					expectedError := errors.Wrap(err, "request time out")
+					expectedError := errors.Wrap(err, "parsing URL timed out")
 
 					mockGofeedParser.
 						EXPECT().

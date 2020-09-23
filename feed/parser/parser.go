@@ -9,8 +9,8 @@ import (
 	"github.com/mmcdole/gofeed"
 )
 
-const ParseErrorMessage = "parsing failed"
-const RequestTimeOutErrorMessage = "request time out"
+const ParseErrorMessage = "parsing URL failed"
+const RequestTimeOutErrorMessage = "parsing URL timed out"
 
 type Parser struct {
 	fp GofeedParser

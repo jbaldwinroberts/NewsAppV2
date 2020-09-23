@@ -4,11 +4,11 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
-	"NewsAppV2/store"
+	store2 "NewsAppV2/feed/store"
 )
 
 var _ = Describe("Store", func() {
-	Context("Urls", func() {
+	Context("GetUrls", func() {
 		Context("When called", func() {
 			It("should return a list of urls", func() {
 				expectedUrls := []string{
@@ -18,8 +18,8 @@ var _ = Describe("Store", func() {
 					"http://urls.reuters.com/reuters/technologyNews?format=xml",
 				}
 
-				s := store.New()
-				actualUrls := s.Urls()
+				s := store2.New()
+				actualUrls := s.GetUrls()
 
 				Expect(actualUrls).To(Equal(expectedUrls))
 			})

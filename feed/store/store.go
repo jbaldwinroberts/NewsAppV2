@@ -15,6 +15,6 @@ func New() Store {
 	}
 }
 
-func (s Store) Urls() []string {
+func (s Store) GetUrls() []string {
 	return s.urls
 }
