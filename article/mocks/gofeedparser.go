@@ -5,6 +5,7 @@
 package mock_parser
 
 import (
+	context "context"
 	gomock "github.com/golang/mock/gomock"
 	gofeed "github.com/mmcdole/gofeed"
 	reflect "reflect"
@@ -46,4 +47,19 @@ func (m *MockGofeedParser) ParseURL(feedURL string) (*gofeed.Feed, error) {
 func (mr *MockGofeedParserMockRecorder) ParseURL(feedURL interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ParseURL", reflect.TypeOf((*MockGofeedParser)(nil).ParseURL), feedURL)
+}
+
+// ParseURLWithContext mocks base method
+func (m *MockGofeedParser) ParseURLWithContext(feedURL string, ctx context.Context) (*gofeed.Feed, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "ParseURLWithContext", feedURL, ctx)
+	ret0, _ := ret[0].(*gofeed.Feed)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ParseURLWithContext indicates an expected call of ParseURLWithContext
+func (mr *MockGofeedParserMockRecorder) ParseURLWithContext(feedURL, ctx interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ParseURLWithContext", reflect.TypeOf((*MockGofeedParser)(nil).ParseURLWithContext), feedURL, ctx)
 }
